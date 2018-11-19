@@ -171,3 +171,69 @@ legend(lgnd,'location','NorthEast')
 grid on
 grid minor
 hold off
+
+
+%==============================================================================================================
+%TEMPERATURE TIME-SERIES
+
+%%
+% Loading the Monthly Temperature Data
+
+% Quttinirpaaq/Eureka Data
+QTempData = xlsread('Eureka.csv');
+QTempmonth = QTempData(:,2);
+Qmintemp = QTempData(:,5);
+Qmaxtemp = QTempData(:,3);
+Qmeantemp = QTempData(:,7);
+
+% Auyuttuq/Cape Hooper Data
+ATempdata = xlsread('CAPEHOOPER.csv');
+Atempmonth = ATempdata(:,2);
+Amintemp = ATempdata(:,5);
+Amaxtemp = ATempdata(:,3);
+Ameantemp = ATempdata(:,7);
+
+%% 
+% Quttinirpaaq Plot
+for month = 1:12
+    meanmintemp(month) = nanmean(Qmintemp(QTempmonth == month));
+    meanmaxtemp(month)= nanmean(Qmaxtemp(QTempmonth == month));
+    meantemp(month)= nanmean(Qmeantemp(QTempmonth == month));
+end
+
+months = (1:12);
+figure
+hold on
+plot(months,meanmintemp,'.');plot(months,meanmaxtemp,'+');plot(months,meantemp,'--');
+legend('Minimum Temperature','Maximum Temperature','Average Temperature','Location','se');
+title('Mean Monthly Temperature from 1947-2016 at Eureka(Quttinirpaaq)');xlabel('Month');ylabel('Temperature (degrees Celcius)');
+
+% table
+t_month = transpose(months);
+t_max = transpose(meanmaxtemp);
+t_min = transpose(meanmintemp);
+t_temp = transpose(meantemp);
+T = table(t_month, t_min, t_temp, t_max);
+
+%%
+% Auyuttuq Plot
+for month = 1:12
+    meanmintemp(month) = nanmean(Amintemp(Atempmonth == month));
+    meanmaxtemp(month)= nanmean(Amaxtemp(Atempmonth == month));
+    meantemp(month)= nanmean(Ameantemp(Atempmonth == month));
+end
+
+months = (1:12);
+figure
+hold on
+plot(months,meanmintemp,'.');plot(months,meanmaxtemp,'+');plot(months,meantemp,'--');
+legend('Minimum Temperature','Maximum Temperature','Average Temperature','Location','se');
+title('Mean Monthly Temperature from 1957-2007 at Cape Hooper(Auyuittuq)');xlabel('Month');ylabel('Temperature (degrees Celcius)');
+
+% table
+t_month = transpose(months);
+t_max = transpose(meanmaxtemp);
+t_min = transpose(meanmintemp);
+t_temp = transpose(meantemp);
+T = table(t_month, t_min, t_temp, t_max);
+
