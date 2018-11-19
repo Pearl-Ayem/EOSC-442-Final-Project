@@ -1,0 +1,96 @@
+
+Created: Fri Jan 24 2014 10:34:55 GMT+0000 (GMT)
+Last Update: Tue Feb 11 2014 01:25:17 GMT+0000 (GMT)
+Id: 50
+Name: Zackenberg ZEROCALM 1
+Country: Greenland
+Timezone: -03:00
+Url: http://gtnpdatabase.org/activelayers/view/50
+Active: yes
+Permafrost_Zone: Continuous
+Longitude: -20.5
+Latitude: 74.46666667
+Elevation: 38.89711761
+Slope: 3 °
+Aspect: 194.3 °
+Type: Grid
+Ancillary Code : G1
+Have_Data: yes
+Metadata Completeness: 87 %
+Description: SITE DESCRIPTION
+	Site is located at 36–37 m.a.s.l. on a southwest, slightly sloping (0–2o) marine-abraded ground moraine of late Weichselian age. The site consists primarily of finegrained sediments with some cobbles and very few small boulders, and has a continuous, homogeneous cover of Cassiope heath vegetation, small (2–4 cm) white-painted stone inside the grid, and by a red-painted small stone along the grid edges. The four corners are marked by red plastic poles to increase visibility in spring, when the ground is still snow covered.
+	SAMPLING DESIGN AND METHOD: 
+	1-ha grid consists of a square array of surveyed points separated by 100 m, yielding an 11 × 11 array of sampling nodes on each grid. Thaw depth was measured by manual probing at each point. The values for each sampling point are averaged, yielding a maximum of 121 data points per grid per probing date.
+	CLOSEST CLIMATE STATION (name, lat./long.); INCLUDE MONTHLY AIR TEMP. AND SNOW DEPTH FOR YEARS OF CALM MEASUREMENTS:  Meteorological station 90 km W-SW of grid
+	LINKS
+	Zackenberg Research Station web page
+Data Author: Hanne Hvidtfeldt  Christiansen 
+Observation: 
+	Landform: Marine abraded ground moraine
+		 	
+		Fine-grained, marine abraded plain
+	Lithology: Typic Psammoturbels
+	Morphology: Alluvial-Lacutrine-Marine(?) Plain
+	Vegetation: Cassiope tetragona heath
+	Vegetation_Name: Tundra
+Accessibility: 
+Disturbance: 
+Citations: 
+	0: 
+		Title: CALM Greenland UNIS
+		Keywords: Active layer
+		Version: 1
+		Language: English
+		Created: Fri Jan 24 2014 10:17:41 GMT+0000 (GMT)
+		Modified: Fri Jan 24 2014 10:17:41 GMT+0000 (GMT)
+		Organizations: 
+			0: 
+				Name: The University Centre in Svalbard
+				Address: 
+					Address: The University Centre in Svalbard - Pb. 156
+					Zip_Code: 9171
+					City: Longyearbyen
+					Country: Norway
+					Phone: +47 79 02 33 00
+					Fax: +47 79 02 33 01
+					Email: post@unis.no
+					Url: http://www.unis.no/
+		Principal Investigators: 
+			0: 
+				First_Name: Hanne Hvidtfeldt 
+				Last_Name: Christiansen 
+				Contact: no
+				Position: Professor , Physical geography 
+				Address: 
+					Country: Norway
+					Phone: +47 79 02 33 20
+					Email: hanne.christiansen@unis.no
+				Organization: 
+					Name: The University Centre in Svalbard
+					Address: 
+						Address: The University Centre in Svalbard - Pb. 156
+						Zip_Code: 9171
+						City: Longyearbyen
+						Country: Norway
+						Phone: +47 79 02 33 00
+						Fax: +47 79 02 33 01
+						Email: post@unis.no
+						Url: http://www.unis.no/
+Datasets: 
+	0: 
+		Created: Fri Feb 07 2014 09:25:24 GMT+0000 (GMT)
+		Last Update: Fri Feb 07 2014 09:25:24 GMT+0000 (GMT)
+		Policy: Open
+		Variable: Active Layer Thickness (grid/transect)
+		Frequency: As Needed
+		Datatype: Sporadic
+		Method: Mechanical Probing
+		Medium: Soil
+		Resolution: Irrelevant
+		Number of values: 20328
+		Number of null values: 163
+		Minimum value: 0
+		Maximum value: 98
+		Avarage value: 51.2790647220937
+		Data: 
+			Csv File: Activelayer_50-Zackenberg_ZEROCALM_1-Dataset_213-Sporadic-As_Needed-Active_Layer_Thickness_grid_transect-Mechanical_Probing.timeserie.csv

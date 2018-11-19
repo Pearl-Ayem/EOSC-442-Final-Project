@@ -1,0 +1,93 @@
+
+Created: Fri Jan 24 2014 10:43:54 GMT+0000 (GMT)
+Last Update: Tue Feb 11 2014 01:25:59 GMT+0000 (GMT)
+Id: 51
+Name: Zackenberg ZEROCALM 2
+Country: Greenland
+Timezone: +00:00
+Url: http://gtnpdatabase.org/activelayers/view/51
+Active: yes
+Permafrost_Zone: Continuous
+Longitude: -20.5
+Latitude: 74.46666667
+Elevation: 38.89711761
+Slope: 3 °
+Aspect: 194.3 °
+Type: Grid
+Ancillary Code : G2
+Have_Data: yes
+Metadata Completeness: 84 %
+Description: SITE DESCRIPTION
+	This grid contains two fluvial bar deposits, one at 22–20 m elevation, one at 10–12 m, with a 14o south-facing slope between them. Mainly fine-grained sediments with some cobbles and very few small boulders occur. The topographic difference between the G1 and G2 sites allows a snowpatch to accumulate on the slope in ZC2. This seasonal snowpatch is centered on the south-facing slope, extending from the Cassiope zone in the north to the moss zone in the south.
+	SAMPLING DESIGN AND METHOD: 
+	The site covers 120 X 150 m, with 10m grid node spacing, providing 208 grid points. Thaw depth was determined by mechanical probing. A 1-cm graduated steel rod was inserted into the soil to the point of resistance to determine the depth of thaw. All measurements were performed approximately 10 cm north of the grid nodes.
+	LINKS
+	Zackenberg Research Station web page
+Data Author: Hanne Hvidtfeldt  Christiansen 
+Observation: 
+	Landform: Fluvial terraces on raised delta
+	Lithology: Typic Psammoturbels
+		Fine-grained, fluvial terraces
+	Vegetation: Salix arctica snowbed, fen
+	Vegetation_Name: Tundra
+Accessibility: 
+Disturbance: 
+Citations: 
+	0: 
+		Title: CALM Greenland UNIS
+		Keywords: Active layer
+		Version: 1
+		Language: English
+		Created: Fri Jan 24 2014 10:17:41 GMT+0000 (GMT)
+		Modified: Fri Jan 24 2014 10:17:41 GMT+0000 (GMT)
+		Organizations: 
+			0: 
+				Name: The University Centre in Svalbard
+				Address: 
+					Address: The University Centre in Svalbard - Pb. 156
+					Zip_Code: 9171
+					City: Longyearbyen
+					Country: Norway
+					Phone: +47 79 02 33 00
+					Fax: +47 79 02 33 01
+					Email: post@unis.no
+					Url: http://www.unis.no/
+		Principal Investigators: 
+			0: 
+				First_Name: Hanne Hvidtfeldt 
+				Last_Name: Christiansen 
+				Contact: no
+				Position: Professor , Physical geography 
+				Address: 
+					Country: Norway
+					Phone: +47 79 02 33 20
+					Email: hanne.christiansen@unis.no
+				Organization: 
+					Name: The University Centre in Svalbard
+					Address: 
+						Address: The University Centre in Svalbard - Pb. 156
+						Zip_Code: 9171
+						City: Longyearbyen
+						Country: Norway
+						Phone: +47 79 02 33 00
+						Fax: +47 79 02 33 01
+						Email: post@unis.no
+						Url: http://www.unis.no/
+Datasets: 
+	0: 
+		Created: Fri Feb 07 2014 14:32:59 GMT+0000 (GMT)
+		Last Update: Fri Feb 07 2014 14:32:59 GMT+0000 (GMT)
+		Policy: Open
+		Variable: Active Layer Thickness (grid/transect)
+		Frequency: Unknown
+		Datatype: Sporadic
+		Method: Mechanical Probing
+		Medium: Soil
+		Resolution: Irrelevant
+		Number of values: 43888
+		Number of null values: 3028
+		Minimum value: 0
+		Maximum value: 124
+		Avarage value: 37.0616877113298
+		Data: 
+			Csv File: Activelayer_51-Zackenberg_ZEROCALM_2-Dataset_215-Sporadic-Unknown-Active_Layer_Thickness_grid_transect-Mechanical_Probing.timeserie.csv
