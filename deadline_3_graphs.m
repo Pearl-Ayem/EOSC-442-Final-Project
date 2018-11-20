@@ -326,6 +326,10 @@ amask=~(isnan(Ayearly_avg)|isnan(Asummer_avg));
 
 figure
 hold on
-plot(Asummer_avg(amask),Ayearly_avg(amask), 'r.', 'Markersize', 24);
-plot(Qsummer_avg(qmask),Qyearly_avg(qmask),'b.', 'Markersize', 24);
+plot(Asummer_avg(amask),Ayearly_avg(amask), 'r-');
+plot(Qsummer_avg(qmask),Qyearly_avg(qmask),'b-');
+legend('Auyuittuq','Quttinirpaaq');
+title('Permafrost thickness vs Mean Yearly Summer Temperatures from 2009-2017');
+xlabel('Temperature (degrees Celcius)');
+ylabel('Permafrost Active Layer Thickness (cm)');
 hold off
