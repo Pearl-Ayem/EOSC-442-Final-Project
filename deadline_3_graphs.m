@@ -11,6 +11,7 @@ clc
 %Asia during the International Polar Year.” study that is described at 
 %the end of this document.
 %==============================================================================================================
+%%
 %RAW DATA
 
 quttinirpaaq_data = xlsread('Quttinirpaaq.xlsx');
@@ -98,6 +99,7 @@ grid on
 grid minor
 
 %==============================================================================================================
+%%
 %AVG DATA
 
 
@@ -226,9 +228,13 @@ end
 months = (1:12);
 figure
 hold on
-plot(months,meanmintemp,'.');plot(months,meanmaxtemp,'+');plot(months,meantemp,'--');
+plot(months,meanmintemp,'.');
+plot(months,meanmaxtemp,'+');
+plot(months,meantemp,'--');
 legend('Minimum Temperature','Maximum Temperature','Average Temperature','Location','se');
-title('Mean Monthly Temperature from 1957-2007 at Cape Hooper(Auyuittuq)');xlabel('Month');ylabel('Temperature (degrees Celcius)');
+title('Mean Monthly Temperature from 1957-2007 at Cape Hooper(Auyuittuq)');
+xlabel('Month');
+ylabel('Temperature (degrees Celcius)');
 
 % table
 t_month = transpose(months);
@@ -237,3 +243,38 @@ t_min = transpose(meanmintemp);
 t_temp = transpose(meantemp);
 T = table(t_month, t_min, t_temp, t_max);
 
+
+%==============================================================================================================
+%%
+%RATE OF CHANGE IN THICKNESS DATA
+
+%%rate of change = slope = (y2-y1)/(x2-x1)
+Ayearly_rate_change=[];
+Arow = 2;
+for year = 2010:2017
+        Acondition = Ayears_data == year;
+        A_slope= Ayearly_avg(Arow)-Ayearly_avg(Arow-1);
+        Ayearly_rate_change(Arow-1)= A_slope;
+        Arow = Arow+1;
+end
+Ayears=[2009:2016];
+
+Qyearly_rate_change=[];
+Qrow = 2;
+for year = 2010:2017
+        Qcondition = Qyears_data == year;
+        Q_slope= Qyearly_avg(Qrow)-Qyearly_avg(Qrow-1);
+        Qyearly_rate_change(Qrow-1)= Q_slope;
+        Qrow = Qrow+1;
+end
+Qyears=[2009:2016];
+
+figure
+hold on
+plot(Ayears,Ayearly_rate_change,'k-');
+plot(Qyears,Qyearly_rate_change,'r-');
+axis([2008,2017,-12,12]);
+legend('Auyuittuq thickness rate of change','Quttinirpaaq thickness rate of change');
+title('Thickness rate of change agaisnt time');
+xlabel('Year');
+ylabel('Rate of change in thickness (cm per year)');
