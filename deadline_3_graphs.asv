@@ -274,3 +274,50 @@ hold on
 plot(Ayears,Ayearly_rate_change,'k-');
 plot(Qyears,Qyearly_rate_change,'r-');
 axis([2008,2017,-12,12]);
+legend('Auyuittuq thickness rate of change','Quttinirpaaq thickness rate of change');
+title('Rate of change in permafrost thickness agaisnt time');
+xlabel('Year');
+ylabel('Rate of change in thickness (cm per year)');
+grid on
+grid minor
+
+%==============================================================================================================
+%%
+%TEMP VS THICKNESS
+
+row = 1;
+Asummer_avg = [];
+Asummer_mean_total=0;
+for year = 2009:2017
+    for month = 6:8
+        Asummer_mean_total = Asummer_mean_total + nanmean(Ameantemp(Atempmonth == month));
+    end
+    Asummer_avg(row) = Asummer_mean_total/3;
+    row = row + 1;
+end
+
+
+row = 1;
+Qsummer_avg = [];
+Qsummer_mean_total=0;
+for year = 2009:2017
+    for month = 6:8
+        Qsummer_mean_total = Qsummer_mean_total + nanmean(Qmeantemp(QTempmonth == month));
+    end
+    Qsummer_avg(row) = Qsummer_mean_total/3;
+    row = row + 1;
+end
+
+Qyearly_avg_same_range=[];
+row = 1;
+for year = 2009:2017
+    Qyearly_avg_same_range(row)=
+
+qmask= ~(isnan(Qyearly_avg)|isnan(Qsummer_avg));
+amask=~(isnan(Ayearly_avg)|isnan(Asummer_avg));
+
+figure
+hold on
+plot(Asummer_avg(amask),Ayearly_avg(amask), 'r.', 'Markersize', 24);
+plot(Qsummer_avg(qmask),Qyearly_avg(qmask),'b.', 'Markersize', 24);
+hold off
