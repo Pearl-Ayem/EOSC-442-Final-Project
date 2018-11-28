@@ -68,17 +68,17 @@ for year = 2009:2017
     i= i+1;
 end
 
-%% TODO: MAKE IT PRETTY
+%% Thickness and Temp same graph timeseries
 years=[2009:2017];
 figure
 hold on
 yyaxis left
-plot(years, Aaverage_temp_yearly);
+plot(years, Aaverage_temp_yearly,'linewidth', 2);
 xlabel('Years');
 ylabel('Temperature ({\circ}C)');
 axis([2009,2017,-16,-7]);
 yyaxis right
-plot(years, Ayearly_avg);
+plot(years, Ayearly_avg,'linewidth', 2);
 ylabel('Thickness (cm)');
 title({'Auyuittuq Active Layer Thickness Yearly Average &',' Average Yearly Temperature Timeseries (2009-2017)'});
 lgnd = {'temp mean', 'thickness mean'};
@@ -90,12 +90,12 @@ hold off
 figure
 hold on
 yyaxis left
-plot(years, Qaverage_temp_yearly);
+plot(years, Qaverage_temp_yearly,'linewidth', 2);
 xlabel('Years');
 ylabel('Temperature ({\circ}C)');
 axis([2009,2017,-20,-7]);
 yyaxis right
-plot(years, Qyearly_avg);
+plot(years, Qyearly_avg,'linewidth', 2);
 ylabel('Thickness (cm)');
 title({'Quttinirpaaq Active Layer Thickness Yearly Average &',' Average Yearly Temperature Timeseries (2009-2017)'});
 lgnd = {'temp mean', 'thickness mean'};
@@ -125,8 +125,8 @@ linfittoplim = coef(1)+bint(2,2).*date;
     
 figure
 hold on 
-plot(Aaverage_temp_yearly,Ayearly_avg, 'r.', 'Markersize', 10);
-plot(Aaverage_temp_yearly,pred_thickness)
+plot(Aaverage_temp_yearly,Ayearly_avg, 'r.', 'Markersize', 14);
+plot(Aaverage_temp_yearly,pred_thickness,'linewidth', 2)
 title({'Auyuittuq Active Layer Thickness Yearly Average VS',' Average Yearly Temperature (2009-2017)'});
 ylabel('ALT thickness (cm)');
 xlabel('Average Temperature ({\circ}C)');
@@ -154,8 +154,8 @@ y_int= coef(1,1);
 pred_thickness= slope*Qaverage_temp_yearly+y_int;
 figure
 hold on
-plot(Qaverage_temp_yearly,Qyearly_avg, 'r.', 'Markersize', 10);
-plot(Qaverage_temp_yearly,pred_thickness)
+plot(Qaverage_temp_yearly,Qyearly_avg, 'r.', 'Markersize', 14);
+plot(Qaverage_temp_yearly,pred_thickness,'linewidth', 2)
 title({'Quttinirpaaq Active Layer Thickness Yearly Average VS',' Average Yearly Temperature (2009-2017)'});
 ylabel('ALT thickness (cm)');
 xlabel('Average Temperature ({\circ}C)');
@@ -174,36 +174,114 @@ hold off
 
 
 %% RATE OF CHANGE IN THICKNESS
-Ayears=[2009:2017];
+Ayears=transpose([2009:2017]);
 Athickness_rate_change=[];
+
 for i = 2:length(Ayearly_avg)-1
-        Athickness_rate_change(i) = nanmean(Ayearly_avg(i-1:i+1));      
+        %Athickness_rate_change(i) = nanmean(Ayearly_avg(i-1:i+1));      
+        Athickness_rate_change(i) = Ayearly_avg(i+1)-Ayearly_avg(i-1);
 end
 
+Ayears=transpose(2010:2016);
+Ayt=transpose(Athickness_rate_change(2:end));
 [coef, bint, r, rint, stats]= regress(Ayt, [ones(size(Ayears)) Ayears]);
 slope=coef(2,1);
 y_int= coef(1,1);
 A_overall_rate_change= slope*Ayears+y_int;
 
 
-years=[2010:2016];
+%years=[2010:2017];
 figure 
 hold on
-plot(years,Athickness_rate_change(2:end));
-plot(years,A_overall_rate_change);
-title('A rate change');
+colour_gold= [255 191 0]./ 255;
+%plot(years,Ayearly_avg(2:end-1), '--', 'Color', colour_gold,'linewidth', 2);
+plot(Ayears,Athickness_rate_change(2:end),'r','linewidth', 2);
+plot(Ayears,A_overall_rate_change,'--', 'Color', colour_gold,'linewidth', 2);
+title({'Auyuittuq rate change in Active Layer Thickness over time'});
+ylabel('ALT rate of change (cm/year)');
+xlabel('Years');
+%lgnd = {'ALT per year', 'Yearly rate of change in ALT', 'Overall rate of change(2009 - 2017)'};
+lgnd = {'Yearly rate of change in ALT', 'Overall rate of change(2009 - 2017)'};
+legend(lgnd,'location','NorthEast')
+text(2010,-11,['Overall rate of change = ',num2str(round(coef(2),3)),' cm per year']);
+axis([2010,2016,-13,10]);
+grid on
+grid minor
+hold off
 hold off
 
-
+Qyears=transpose([2009:2017]);
 Qthickness_rate_change=[];
-for i = 2:length(Qyearly_avg)-1
-        Qthickness_rate_change(i) = nanmean(Qyearly_avg(i-1:i+1));
-end
-figure
-plot(years,Qthickness_rate_change(2:end));
-    
-    
 
+for i = 2:length(Qyearly_avg)-1
+        %Qthickness_rate_change(i) = nanmean(Qyearly_avg(i-1:i+1));      
+        Qthickness_rate_change(i) = Qyearly_avg(i+1)-Qyearly_avg(i-1);
+end
+
+Qyears=transpose(2010:2016);
+Qyt=transpose(Qthickness_rate_change(2:end));
+[coef, bint, r, rint, stats]= regress(Qyt, [ones(size(Qyears)) Qyears]);
+slope=coef(2,1);
+y_int= coef(1,1);
+Q_overall_rate_change= slope*Qyears+y_int;
+
+
+%years=[2010:2017];
+figure 
+hold on
+colour_gold= [255 191 0]./ 255;
+%plot(years,Ayearly_avg(2:end-1), '--', 'Color', colour_gold,'linewidth', 2);
+plot(Qyears,Qthickness_rate_change(2:end),'r','linewidth', 2);
+plot(Qyears,Q_overall_rate_change,'--', 'Color', colour_gold,'linewidth', 2);
+title({'Quttinirpaaq rate change in Active Layer Thickness over time'});
+ylabel('ALT rate of change (cm/year)');
+xlabel('Years');
+%lgnd = {'ALT per year', 'Yearly rate of change in ALT', 'Overall rate of change(2009 - 2017)'};
+lgnd = {'Yearly rate of change in ALT', 'Overall rate of change(2009 - 2017)'};
+legend(lgnd,'location','NorthEast')
+text(2010,-11,['Overall rate of change = ',num2str(round(coef(2),3)),' cm per year']);
+axis([2010,2016,-13,15]);
+grid on
+grid minor
+hold off
+hold off
+
+%% T-TEST BETWEEN THE 2 SETS OF RATES OF CHANGE 
+
+% Null hypothesis: there is no difference between the rates of change (rate
+% of change A = rate of change Q). 
+%Alternative hypothesis: rate of change A is not the same as rate of change Q
+
+[h,p,ci,stats] = ttest2(Q_overall_rate_change,A_overall_rate_change);
+
+data = [A_overall_rate_change,Q_overall_rate_change];               % Create Data
+dmean = mean(data);                                                 % Mean
+dci  = std(data)*tinv(0.975,size(data,1)-1);                        % Confidence Intervals
+xt = [1:2];                                                         % X-Ticks
+xtd = repmat(xt, size(data,1), 1);                                  % X-Ticks For Data
+sb = [xt'-ones(size(data,2),1)*0.1,  xt'+ones(size(data,2),1)*0.1]; % Short Bar X
+lb = [xt'-ones(size(data,2),1)*0.2,  xt'+ones(size(data,2),1)*0.2]; % Long Bar X
+
+figure
+hold on
+yyaxis left
+xlabel('Test Region');
+ylabel('Rate of change in ALT (cm per year)');
+plot(xt(1), data(:,1), 'r.', 'Markersize', 10);
+for k1 = 1:size(data,2)
+    plot(lb(k1,:), [1 1]*dmean(k1), sb(k1,:), [1 1]*(dmean(k1)-dci(k1)), sb(k1,:), [1 1]*(dmean(k1)+dci(k1)), '-k', 'linewidth', 1)
+end
+text(0.1,-4.6,['t-stat = ',num2str(round(stats.tstat,3)),...
+    '; degree freedom = ',num2str(round(stats.df,3))]);
+axis([0,3,-6,5]);
+yyaxis right
+plot(xt(2), data(:,2), 'b.', 'Markersize', 10);
+set(gca, 'XTick', xt, 'XTickLabel', {'Auyuittuq','Quttinirpaaq'})
+title({'Comparing ALT rates of change in',' Auyuittuq and Quttinirpaaq: t-test'});
+
+        
+
+hold off
 
 %% THICKNESS TIMESERIES RAW
 Ayearly_avg=[];
@@ -270,12 +348,3 @@ legend(lgnd,'location','NorthWest')
 grid on
 grid minor
 hold off
-
-
-
-
-
-
-
-
-
